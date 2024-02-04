@@ -1,0 +1,17 @@
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.form-signin {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  background-color: aliceblue;
+}
+
+
+
+
