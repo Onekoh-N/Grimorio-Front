@@ -15,12 +15,17 @@ export class AuthService {
 
   public login(formValue: LoginInterface): Observable<ResponseInterface> {
     return this._httClient.post<ResponseInterface>(`${this.baseUrl}/login`, formValue)
-      .pipe(catchError(httpHandleError));
+    .pipe(catchError(httpHandleError));
   }
 
   public register(formValue: RegisterInterface): Observable<ResponseInterface> {
     return this._httClient.post<ResponseInterface>(`${this.baseUrl}/register`, formValue)
     .pipe(catchError(httpHandleError));
+  }
+
+  public logout(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
 
 }

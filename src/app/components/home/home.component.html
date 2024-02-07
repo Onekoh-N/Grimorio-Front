@@ -1,2 +1,12 @@
-<nav-bar></nav-bar>
-<p>home works!</p>
+
+
+  <div class="data text-center p-3">
+    <p      class="tittle h3 fw-bold mb-4">Datos del Usuario: </p>
+    <div    class="d-flex mt-0 justify-content-between mt-2"><p class="ms-4 ">UserName: </p><p class="me-4 fw-bold">{{userData.userName}} </p></div>
+    <div    class="d-flex mt-0 justify-content-between mt-2"><p class="ms-4 ">Email:    </p><p class="me-4 fw-bold">{{userData.email}}    </p></div>
+    <div    class="d-flex mt-0 justify-content-between mt-2"><p class="ms-4 ">Rol:      </p><p class="me-4 fw-bold">{{userData.rol}}      </p></div>
+    <div    class="d-flex mt-0 justify-content-between mt-2"><p class="ms-4">Logueado:  </p><p class="me-4 fw-bold" [ngClass]="{'text-success': isLogged, 'text-danger': !isLogged}">{{isLogged}}</p></div>
+    <button class="btn btn-primary mt-4" type="button"  (click)="logOut()">LogOut</button>
+  </div>
+
+<router-outlet></router-outlet>

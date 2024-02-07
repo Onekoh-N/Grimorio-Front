@@ -1,27 +1,36 @@
-<div class="container">
+<div class="container" *ngIf="!registrado">
   <form class="form-signin p-5 m-5" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <h1 class="text-center h3  fw-normal">Please register</h1>
 
-    <div class="Usuario form-floating">
-      <input [ngClass]="{'is-invalid': hasErrors('user', 'required') || hasErrors('user', 'minlength')}" type="text" class="form-control  mt-3" id="Usuario" placeholder="Usuario" formControlName="usuario">
-      <label class="input-label" for="Usuario">Usuario</label>
-      <div class="text-danger" *ngIf="hasErrors('user', 'required')">Campo obligatorio.</div>
-      <div class="text-danger" *ngIf="hasErrors('user', 'minlength')">Requiero minimo 3 caracteres.</div>
+    <div class="UserName form-floating">
+      <input [ngClass]="{'is-invalid': hasErrors('userName', 'required') || hasErrors('user', 'minlength')}" type="text" class="form-control  mt-3" placeholder="UserName" formControlName="userName">
+      <label class="input-label">Usuario</label>
+      <div class="text-danger" *ngIf="hasErrors('userName', 'required')">Campo obligatorio.</div>
+      <div class="text-danger" *ngIf="hasErrors('userName', 'minlength')">Requiero minimo 3 caracteres.</div>
     </div>
 
     <div class="Email form-floating">
       <input [ngClass]="{'is-invalid': hasErrors('email', 'required') || hasErrors('email', 'email')}" type="text" class="form-control mt-3" id="Email" placeholder="name@example.com" formControlName="email">
-      <label class="input-label" for="Email">Email</label>
+      <label class="input-label">Email</label>
       <div class="text-danger" *ngIf="hasErrors('email', 'email')">Mail invalido.</div>
       <div class="text-danger" *ngIf="hasErrors('email', 'required')">Campo obligatorio.</div>
     </div>
 
-    <div class="Password form-floating">
+    <div class="Password form-floating mb-3">
       <input [ngClass]="{'is-invalid': hasErrors('password', 'required') || hasErrors('password', 'minlength')}" type="password" class="form-control mt-3" id="Password" placeholder="Password" formControlName="password">
-      <label for="Password">Contraseña</label>
+      <label class="input-label">Contraseña</label>
       <div class="text-danger" *ngIf="hasErrors('password', 'required')">Campo obligatorio.</div>
       <div class="text-danger" *ngIf="hasErrors('password', 'minlength')">Requiero minimo 6 caracteres.</div>
     </div>
-    <button class="btn btn-primary w-100 py-2 mt-3" type="submit">Register</button>
+    <p class="text-center text-danger">{{message}}</p>
+    <button *ngIf="!loading" [disabled]="registerForm.invalid" class="btn btn-primary w-100 py-2 " type="submit">Registrarse</button>
+    <button *ngIf="loading" class="btn btn-primary w-100 py-2 mt-3" type="button" disabled>
+      <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+      <span role="status"> Cargando...</span>
+    </button>
   </form>
+</div>
+<div class="container" *ngIf="registrado">
+  <h1 class="text-center h3">Registrado Correctamente</h1>
+  <button class="btn btn-primary w-100 py-2 mt-3" (click)="redirect()" type="button">Iniciar Sesion</button>
 </div>

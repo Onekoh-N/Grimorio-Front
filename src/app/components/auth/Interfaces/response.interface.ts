@@ -1,8 +1,10 @@
+import { UserData } from "./userData.interface";
+
 export interface ResponseInterface {
-  error?: string;
-  message: string;
+  success: boolean;
   statusCode: number;
-  email: string;
-  token: string;
-  rol: string;
+  message: string;
+  error?: string;
+  token?: string;
+  userData?: UserData;
 }
