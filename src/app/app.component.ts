@@ -14,7 +14,7 @@ import { NavBarComponent } from './components/Nav-bar/nav-bar.component';
     NavBarComponent,
     RegisterComponent,
     ReactiveFormsModule,
-    LoginComponent
+    LoginComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

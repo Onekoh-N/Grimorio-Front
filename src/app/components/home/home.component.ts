@@ -30,8 +30,8 @@ export class HomeComponent implements OnInit, OnDestroy{
   //ON-INIT
   ngOnInit(): void {
     this.isLogged = (localStorage.getItem('token')) ? true : false;
-    const user = localStorage.getItem('user');
-    if (localStorage.getItem('user')){
+    const user = localStorage.getItem('userData');
+    if (user && user != null) {
       this.userData = JSON.parse(user as string) as UserData
     }
   }
